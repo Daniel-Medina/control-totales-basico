@@ -27,11 +27,18 @@ class AgregarController {
                 'status' => 'error',
                 'message' => 'La cantidad debe ser numerica',
                 'code' => 500
-            ]);
+            ], http_response_code(500));
             return;
         }
 
-        $sql = Agregar::guardarDatos($request->fecha, $request->cantidad);
+        // Acomodar la fecha en formato #De 1/1/2023 a 1/01/2023
+        $fecha = explode('-', $request->fecha);
+        $fechaFormateadaDia = $fecha[0] < 10 ? '0' . $fecha[0] : $fecha[0];
+        $fechaFormateadaMes = $fecha[1] < 10 ? '0' . $fecha[1] : $fecha[1];
+        // Fecha correcta a almacenar
+        $fecha = $fechaFormateadaDia . '-' . $fechaFormateadaMes . '-' . $fecha[2];
+
+       $sql = Agregar::guardarDatos($fecha, $request->cantidad);
 
         echo json_encode($sql, $sql['code']);
 

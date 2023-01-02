@@ -3,9 +3,6 @@
 date_default_timezone_set('America/Mexico_City');
 
 //Establecer los headers de las peticiones
-// header('Access-Control-Allow-Origin: *'); //permitir el acceso cruzado
-// header('Access-Control-Allow-Header: Origin, X-Request-With, Content-Type, Accept');
-// header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
 header('content-type: application/json; charset-utf-8');
 
 header('Access-Control-Allow-Origin: *');

@@ -28,8 +28,8 @@ new Vue({
                 this.form.cantidad = 0;
                 mensaje('Agregado con exito', 'success');
             }).catch(function (json) {
-                mensaje('Ocurrio un error', 'error');
-                //console.log(json);
+                //console.log(json.data);
+                mensaje('Ocurrio un error: ' + json.data.message, 'error');
             });
         }
     },
